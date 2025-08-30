@@ -29,9 +29,9 @@ const QoDTags = [
 export type QoDTags = (typeof QoDTags)[number];
 
 type QoD = {
-  [Tag in QoDTags]: IQuote | null;
+  [Tag in QoDTags]?: IQuote;
 } & {
-  date: Date | null;
+  date?: Date;
 };
 
 function filter(quotes: IQuote[], options: IFilterOptions) {
@@ -74,15 +74,7 @@ async function getRandom(): Promise<IQuote> {
 }
 
 async function updateQoD(cache: RuntimeCache): Promise<QoD> {
-  const qod: QoD = {
-    all: null,
-    faith: null,
-    humor: null,
-    inspirational: null,
-    love: null,
-    philosopy: null,
-    date: null,
-  };
+  const qod: QoD = {};
 
   for (let tag of QoDTags) {
     let filtered = await getAll();
