@@ -135,3 +135,5 @@ dist
 # VSCode configuration
 Quotes\ API.code-workspace
 .vercel
+.env*.local
+venv
