@@ -95,6 +95,7 @@ async function getQoD(tag: QoDTags): Promise<IQuote> {
   if (cached) {
     // If cache exists but the date isn't today, update qod
     if (
+      cached.date === null ||
       cached.date?.getFullYear() !== new Date().getFullYear() ||
       cached.date?.getMonth() !== new Date().getMonth() ||
       cached.date?.getDate() !== new Date().getDate()
